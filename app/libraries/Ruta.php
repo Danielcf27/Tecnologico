@@ -16,14 +16,15 @@ class Ruta{
     {
         $url= $this -> getUrl();
         if  ($url != null){
-            if(file_exists(APPROOT.'/controllers/'.ucwords($url[0]))){
+            if(file_exists(APPROOT.'/controllers/'.ucwords($url[0]).'.php')){
                 $this -> controladorActual = ucwords($url[0]);
             }
+
+            unset($url[0]);
         } 
     
-        unset($url[0]);
-    
-        include_once APPROOT.'/controllers./'.ucwords($urls[0]).'php';
+       
+        include_once APPROOT.'/controllers./'.$this->controladorActual.'.php';
 
         $this -> controladorActual = new $this->controladorActual;
 
@@ -31,14 +32,14 @@ class Ruta{
             if(method_exists($this ->controladorActual, $url[1])){
                 $this -> metodoActual = $url[1];
             }
-            unset($url[0]);
+            unset($url[1]);
         }
 
         $this -> parametros = ($url) ? array_values($url) : [];
         call_user_func_array([$this ->controladorActual, $this-> metodoActual], $this -> parametros);
 
-
     }
+    
 
 
     public function getUrl(){
