@@ -20,7 +20,7 @@
     <!-- Custom styles for this template -->
 </head>
   <body class="d-flex flex-column h-100">
-    
+
 <header>
   <!-- Fixed navbar -->
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -32,19 +32,18 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled">Disabled</a>
+            <a class="nav-link" aria-current="page" href="#">Inicio</a>
           </li>
         </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+        <ul class="navbar-nav d-flex my-2 my-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="<?= URLROOT ?>/usuarios/login"; >Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="<?= URLROOT ?>/usuarios/registrar"; >Registrar</a>
+          </li>
+          
+        </ul>
       </div>
     </div>
   </nav>
