@@ -1,62 +1,70 @@
 <?php
 
-class Usuarios extends Controller{
+class Usuarios extends Controller
+{
 
     public function __construct()
     {
-        $this->usuarioModel = $this-> model('Usuario');
+        $this->usuarioModel = $this->model('Usuario');
     }
 
-    public function registrar(){
-
+    public function index()
+    {
+        $this->view('/construccion');
+    }
+    public function registrar()
+    {
         $data = [
-
-            'usuario_id'         =>     '',
-            'usuario_nombre'     =>     '',
-            'usuario_password'   =>     '',
-            'usuario_email'      =>     '',
-            'msg_error'          =>     '',
-
+            'usuario_id'          => '',
+            'usuario_nombre'      => '',
+            'usuario_password'    => '',
+            'usuario_email'       => '',
+            'msg_error'           => '',
         ];
-    
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            //recomendacion de seguridad
 
-            $_POST= filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
             $data = [
-
-                'usuario_id'         =>     $_POST['usuario_id'],
-                'usuario_nombre'     =>     $_POST['usuario_nombre'],
-                'usuario_password'   =>     $_POST['usuario_password'],
-                'conf_password'      =>     $_POST['conf_password'],
-                'usuario_email'      =>     $_POST['usuario_email'],
-                
-    
+                'usuario_id'          => $_POST['usuario_id'],
+                'usuario_nombre'      => $_POST['usuario_nombre'],
+                'usuario_password'    => $_POST['usuario_password'],
+                'conf_password'       => $_POST['conf_password'],
+                'usuario_email'       => $_POST['usuario_email'],
             ];
-        if (empty($data['usuario_id']) || empty($data['usuario_nombre']) ||empty($data['usuario_password']) ||empty($data['conf_password']) || empty($data['usuario_email'])){
+            #recomendacion    ---validar
+            #datos vacios
+            if (empty($data['usuario_id']) || empty($data['usuario_nombre']) || empty($data['usuario_password']) || empty($data['conf_password']) || empty($data['usuario_email'])) {
+                $data['msg_error'] = 'Llene todos los campos requeridos';
+            }
+            #validar que sean iguales los password
+            if ($data['usuario_password'] != $data['conf_password']) {
+                $data['msg_error'] = 'Los valores de Password no coinciden';
+            }
+            #validar el formato del correo
+            if (!filter_var($data['usuario_email'], FILTER_VALIDATE_EMAIL)) {
+                $data['msg_error'] = 'El correo no es valido';
+            }
+            #validar la existencia de usuario y/o correo
+            //       if ($this->usuarioModel->encontrarUsuarioPorEmailOId($data['usuario_email'], $data['usuario_id'])) {
+            //           $data['msg_error'] = 'El usuario y/o correo ya esta registrado';
+            //       }
+            /** aqui iran validaciones posteriores si se requiere */
 
-            $data['msg_error']= "Llene todos los campos requeridos";
+            if (empty($data['msg_error'])) {
 
-        }
-        if($data['usuario_password' != $data['conf_password']]){
-            $data['msg_error']="Los valores de password no coinciden";
+                $data['usuario_password'] = password_hash($data['usuario_password'], PASSWORD_DEFAULT);
+                #llamar al modelo para insertar
+                if ($this->usuarioModel->registrar($data)) {
+                    //la llamada hay que pasar por controlador
+                    redirigir('/usuarios/login');
+                }
+            } else {
+                $data['msg_error'] = "Error inesperado....";
+            }
+        } //fin de Post
 
-        }
-        if(!filter_var($data['usuario_email'],FILTER_VALIDATE_EMAIL))
-                $data['usuarios_email']= "EL Correo no es valido";
-
-        }
-        if($this-> usuarioModel -> data){}
-
-        if(empty($data['msg_error'])){
-            
-        }else{
-
-            $data['msg_error']="Error inesperado";
-        }
-
-        $this -> view('usuarios/registrar', $data);
- 
+        $this->view('usuarios/registrar', $data);
     }
-
-
 }

@@ -5,7 +5,8 @@
 </footer>
 
 
-    <script src="<?php URLROOT?>/bootstrap/js/bootstrap.bundle.min.js"></script>
-      
-  </body>
+<script src="<?php URLROOT ?>/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
 </html>
