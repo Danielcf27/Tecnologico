@@ -1,8 +1,8 @@
 <?php
     
     session_start();
-function redirigir($location){
+function redirigir($locacion){
 
-    header('Location:  '.$location);
+    header('Location:  '.$locacion);
 
 }

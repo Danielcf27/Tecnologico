@@ -7,7 +7,7 @@ class Base
 
     private $motor = DBMOTOR;
     private $server = DBSERVER;
-    private $bd = DBNAME;
+    private $db = DBNAME;
     private $user = DBUSER;
     private $pw = DBPW;
 
@@ -19,7 +19,7 @@ class Base
 
     public function __construct()
     {
-        $dsn = $this->motor . ':host' . $this->server . ';dbname=' . $this->bd;
+        $dsn = $this->motor . ':host=' . $this->server . ';dbname=' . $this->db;
         $options = [
 
             PDO::ATTR_PERSISTENT => true,
@@ -60,15 +60,15 @@ class Base
         $this->stmt->bindValue($parametro, $valor, $tipo);
     }
 
-    public function ejecutar()
+    public function execute()
     {
-        $this->stmt->ejecutar();
+        $this->stmt->execute();
     }
     //para un unico registro
     public function unico()
     {
 
-        $this->ejecutar();
+        $this->execute();
         return $this->stmt->fetch(PDO::FETCH_OBJ);
     }
     //multiples
