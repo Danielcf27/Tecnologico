@@ -113,4 +113,14 @@ class Usuarios extends Controller
 
         $this->view('usuarios/registrar', $data);
     }
+    function logout(){
+
+        unset($_SESSION['usuario_id']);
+        unset($_SESSION['usuario_nombre']);
+        unset($_SESSION['usuario_email']);
+
+        redirigir('/usuarios/login');
+        
+        
+    }
 }

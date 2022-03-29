@@ -27,14 +27,14 @@ class usuario
               
             WHERE usuario_id = :usuario_id');
         //vincular
-        $this->db->bind(':usuario_id',$usuario_id);
+        $this->db->bind(':usuario_id', $usuario_id);
         //ejecucion
 
-        $usuario=$this->db->unico();
-        if($this->db->conteoReg()>0){
+        $usuario = $this->db->unico();
+        if ($this->db->conteoReg() > 0) {
             //validar password
-            $hashedpassword= $usuario->usuario_password;
-            if(password_verify($usuario_password,$hashedpassword)){
+            $hashedpassword = $usuario->usuario_password;
+            if (password_verify($usuario_password, $hashedpassword)) {
                 return $usuario;
             } else {
                 return false;

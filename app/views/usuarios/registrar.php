@@ -5,18 +5,23 @@
 
         <div class="col-sm-3"></div>
         <div class="col-sm-6">
-            <div class="row mt-3" style="background: #eceff1;">
-                <div class="col-sm-11">
+            <div class="row mt-3">
+                <div class="col-sm-7" style="text-align: center;">
+                    <i class="fa fa-user text-success"></i>
+                </div>
+                <div class="row mt-3"></div>
+                <div class="col-sm-7" style="text-align: center;">
                     <h4>Registro</h4>
                 </div>
-                <div class="col-sm-1"><i class="fa fa-user text-info"></i></div>
+
+
             </div>
             <!-- mostar errores -->
 
             <div class="alert alert-warning <?= (isset($data['msg_error']) && !empty($data['msg_error'])) ? 'd-block' : 'd-none'; ?>">
-                <?= (isset($data['msg_error']) && !empty($data['msg_error'])) ? $data['msg_error']: ''; ?>
+                <?= (isset($data['msg_error']) && !empty($data['msg_error'])) ? $data['msg_error'] : ''; ?>
             </div>
-            <form class="" action="<?php URLROOT ?>/usuarios/login" method="POST">
+            <form class="" action="<?php URLROOT ?>/usuarios/registrar" method="POST">
                 <div class="row">
                     <div class="col-sm-7">
                         <div class="mb-3">
@@ -54,18 +59,24 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-sm-3">
-                        <div class="col-sm-4"></div>
-                        <div class="col-sm-4">
-                            <button type="submit" class="btn btn-lg btn-success">Registrar</button>
-                        </div>
-                        <div class="col-sm-4"></div>
+
+                <div class="col-sm-3">
+                    <div class="col-sm-8">
+                        <button type="submit" class="btn btn-success">Registrar</button>
                     </div>
+
+                    <div class="col-sm-4"></div>
+
+
+
+
                 </div>
+
             </form>
         </div>
+        <div class="col-sm-3"></div>
     </div>
 </div>
+
 
 <?php include_once APPROOT . '/views/includes/footer.inc.php'; ?>

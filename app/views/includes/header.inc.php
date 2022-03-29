@@ -28,25 +28,29 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav me-auto mb-2 mb-md-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="<?= URLROOT ?>">Inicio</a>
+              <a class="nav-link active" aria-current="page" href="<?= URLROOT ?>"><i class="fa fa-home text-white"></i></a>
             </li>
+            <li class="nav-item">
+              <a class ="nav-link active" href="<?= URLROOT?>/alumnos">Alumnos</a>
+            </li>
+
           </ul>
           <ul class="navbar-nav d-flex my-2 my-lg-0">
-            <!--<?php //if(estalogeado()){ ?>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#" <?= $_SESSION[''];?>></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="<?= URLROOT ?>/usuarios/login" ;>Logout</a>
-            </li>
-            <?php //} else { ?>-->
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="<?= URLROOT ?>/usuarios/login" ;>Login</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="<?= URLROOT ?>/usuarios/registrar" ;>Registrar</a>
-            </li>
-            <?php //} ?>
+            <?php if (estalogeado()) { ?>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#" ><?= $_SESSION['usuario_nombre']; ?></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="<?= URLROOT ?>/usuarios/logout" ;>Logout</a>
+              </li>
+            <?php } else { ?>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="<?= URLROOT ?>/usuarios/login" ;>Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="<?= URLROOT ?>/usuarios/registrar" ;>Registrar</a>
+              </li>
+            <?php } ?>
 
           </ul>
         </div>
