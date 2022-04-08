@@ -74,8 +74,9 @@ class Base
     //multiples
     public function multiple()
     {
+        $this->execute();
+       return $this->stmt->fetchAll(PDO::FETCH_OBJ);
 
-        $this->stmt->fetchAll(PDO::FETCH_OBJ);
     }
     public function conteoReg()
     {
