@@ -4,7 +4,10 @@
 <?php if (estalogeado()) { ?>
 
     <div class="row">
-        <div class="col-sm-11"></div>
+        <div class="col-sm-7"></div>
+        <div class="col-sm-4">
+            Exportar a Json <a class="btn btn-success" href="<?= URLROOT; ?>/alumnos/json"><i class="fa-solid fa-file-excel"></i></a>
+        </div>
         <div class="col-sm-1">
             <a class="btn btn-primary" href="<?= URLROOT; ?>/alumnos/agregar"><i class="fa fa-plus"></i></a>
         </div>

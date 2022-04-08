@@ -122,4 +122,13 @@ class alumno
             return false;
         }
     }
+
+    public function listarTodosAlumnos()
+    {
+
+        $this->db->query('SELECT id, alumno_no_control, alumno_nombre FROM alumnos');
+
+        $data['alumnos'] = $this->db->multiple();
+        return $data;
+    }
 }

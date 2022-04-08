@@ -104,4 +104,13 @@ class Alumnos extends Controller
         $this->alumnoModel->borrar($id);
         redirigir('/alumnos');
     }
+
+//exportar a JSON
+    public function json(){
+
+        $alumnos= $this->alumnoModel->listarTodosAlumnos();
+        $this->view('alumnos/json', $alumnos);
+
+    }
+
 }
