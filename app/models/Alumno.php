@@ -131,4 +131,11 @@ class alumno
         $data['alumnos'] = $this->db->multiple();
         return $data;
     }
+    public function listarTodosAlumnosConFoto()
+    {
+
+        $this->db->query('SELECT id, alumno_no_control, alumno_nombre, alumno_fotografia FROM alumnos');
+        $data['alumnos'] = $this->db->multiple();
+        return $data;
+    }
 }

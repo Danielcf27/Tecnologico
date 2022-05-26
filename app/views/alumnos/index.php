@@ -6,8 +6,11 @@
     <div class="row">
         <div class="col-sm-7"></div>
         <div class="col-sm-4">
-            Exportar a Json <a class="btn btn-success" href="<?= URLROOT; ?>/alumnos/json"><i class="fa-solid fa-file-excel"></i></a>
+            Exportar a Json <a class="btn btn-default" href="<?= URLROOT; ?>/alumnos/json">
+            <i class="fa fa-file-excel"></i></a> &nbsp; PDF <a class="btn btn-default" href="<?= URLROOT; ?>/alumnos/pdf">
+            <i class="fa fa-file-pdf"></i></a>
         </div>
+        
         <div class="col-sm-1">
             <a class="btn btn-primary" href="<?= URLROOT; ?>/alumnos/agregar"><i class="fa fa-plus"></i></a>
         </div>
@@ -30,6 +33,7 @@
                     <td><?= $registro->alumno_no_control; ?></td>
                     <td><?= $registro->alumno_nombre; ?></td>
                     <td><img src="data:image/png;base64,<?= base64_encode($registro->alumno_fotografia); ?>" width="30" alt="Foto"></td>
+                    
                     <td>
                         <a class="btn btn-warning" href="<?= URLROOT; ?>/alumnos/editar/<?= $registro->id; ?>"><i class="fa fa-edit"></i></a>
                         <a class="btn btn-danger" href="<?= URLROOT; ?>/alumnos/borrar/<?= $registro->id; ?>"><i class="fa fa-trash"></i></a>
