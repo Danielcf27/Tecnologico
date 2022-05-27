@@ -112,5 +112,11 @@ class Alumnos extends Controller
         $this->view('alumnos/json', $alumnos);
 
     }
+    
+    public function pdf()
+    {
+        $alumnos= $this->alumnoModel->listarTodosAlumnosConFoto();
+        $this->view('alumnos/pdf', $alumnos);
+    }
 
 }

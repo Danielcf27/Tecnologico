@@ -2,6 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Curso internet avanzado</title>
@@ -13,6 +14,7 @@
 
   <!-- Custom styles for this template -->
 </head>
+
 
 <body class="d-flex flex-column h-100">
 
@@ -31,14 +33,22 @@
               <a class="nav-link active" aria-current="page" href="<?= URLROOT ?>"><i class="fa fa-home text-white"></i></a>
             </li>
             <li class="nav-item">
-              <a class ="nav-link active" href="<?= URLROOT?>/alumnos">Alumnos</a>
+              <a class="nav-link active" href="<?= URLROOT ?>/alumnos">Alumnos</a>
             </li>
+            <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Opciones
+          </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="<?php URLROOT?>/carreras">Carreras</a>
+          <a class="dropdown-item" href="<?php URLROOT?>/materias">Materias</a>
+      </li>
 
           </ul>
           <ul class="navbar-nav d-flex my-2 my-lg-0">
             <?php if (estalogeado()) { ?>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#" ><?= $_SESSION['usuario_nombre']; ?></a>
+                <a class="nav-link active" aria-current="page" href="#"><?= $_SESSION['usuario_nombre']; ?></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="<?= URLROOT ?>/usuarios/logout" ;>Logout</a>
